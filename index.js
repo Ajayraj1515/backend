@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const db = require("./config/db"); // ✅ MySQL connection
+const db = require("./config/db");
 const jobRoutes = require("./routes/jobRoutes");
 
 const app = express();
@@ -11,13 +11,13 @@ app.use(cors({ origin: process.env.CLIENT_URL || "*", credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/jobs", jobRoutes); // ✅ All job APIs
+app.use("/api/jobs", jobRoutes);
 
 app.get("/", (req, res) => {
   res.send("Server is running...");
 });
 
-// Test DB connection
+
 db.getConnection()
   .then(() => {
     console.log("✅ MySQL connected");

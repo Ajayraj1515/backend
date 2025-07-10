@@ -1,6 +1,5 @@
 const db = require("../config/db");
 
-// -------------------- CREATE JOB --------------------
 const createJob = async (req, res) => {
   const {
     title,
@@ -63,7 +62,7 @@ const createJob = async (req, res) => {
   }
 };
 
-// -------------------- GET ALL JOBS --------------------
+
 const getAllJobs = async (req, res) => {
   const { search, location, job_type, min_salary, max_salary } = req.query;
 
@@ -87,7 +86,7 @@ const getAllJobs = async (req, res) => {
 
   if (min_salary && max_salary) {
     sql += " AND min_salary BETWEEN ? AND ?";
-    values.push(min_salary * 12, max_salary * 12); // assuming monthly salary input
+    values.push(min_salary * 12, max_salary * 12);
   }
 
   try {
